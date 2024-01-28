@@ -5,11 +5,17 @@
                         <h2  class="text-center">Teacher Application</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ route("teachers.create") }}" class="btn btn-success btn-sm" title="Add New Teacher">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ route("teachers.create") }}" class="btn btn-success btn-sm" title="Add New Teacher">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                               @include('components.search')
+                            </div>
+                       </div>
+
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -19,6 +25,7 @@
                                         <th>Gender</th>
                                         <th>Address</th>
                                         <th>Mobile</th>
+                                        <th>Image</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -30,6 +37,9 @@
                                         <td>{{ $teh->gender }}</td>
                                         <td>{{ $teh->address }}</td>
                                         <td>{{ $teh->tel }}</td>
+                                        <td>
+                                            <img src="{{ asset($teh->image) }}" alt="Img" style="width: 70px; height:70px;">
+                                        </td>
 
                                         <td>
                                             <a href="{{ route('teachers.show',$teh->id) }}" title="View Teacher"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

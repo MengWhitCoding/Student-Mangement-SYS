@@ -5,11 +5,17 @@
                         <h2  class="text-center">Enrollment Application</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ route("enrollment.create") }}" class="btn btn-success btn-sm" title="Add New Enrollment">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ route("enrollment.create") }}" class="btn btn-success btn-sm" title="Add New Enrollment">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                               @include('components.search')
+                            </div>
+                       </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>

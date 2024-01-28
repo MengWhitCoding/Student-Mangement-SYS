@@ -86,4 +86,16 @@ class EnrollmentController extends Controller
         EnrollmentModel::find($id)->delete();
         return redirect()->route("enrollment.index")->with("success","Enrollment deleted!");
     }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $enrollments = EnrollmentModel::where(function($query) use ($search){
+            $query->where("enroll_no","like","%".$search."%")
+            ->orWhere("join_date","like","%".$search."%")
+            ->orWhere("fee","like","%".$search."%");
+        })
+
+        ->get();
+        return view("enrollmentView.index", compact("enrollments","search"));
+    }
 }

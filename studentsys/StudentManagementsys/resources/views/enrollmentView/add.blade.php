@@ -37,7 +37,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Join_date</label>
-                <input type="text" class="form-control @error('join_date') is-invalid @enderror" id="join_date"
+                <input type="date" class="form-control @error('join_date') is-invalid @enderror" id="join_date"
                     name="join_date" />
                 @error('join_date')
                     <div class="invalid-feedback">{{ $message }}</div>

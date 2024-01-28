@@ -57,9 +57,11 @@
 
         }
         .member{
+
             text-align: center;
-            padding: 20px;
+            padding: 70px 0px;
             color: blue;
+            height: 430px;
         }
     </style>
 </head>
@@ -69,7 +71,7 @@
     <div class="container">
         <div class="row">
             <div class="col md-12">
-                <nav class="text-center mt-5" style="background-color: blue; border-radius:10px;">
+                <nav class="text-center mt-5" style="background-color: blue; border-radius:7px;">
                     <h2 style="color: white; padding:15px; ">Student Management System</h2>
                 </nav>
             </div>

@@ -19,7 +19,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Paid_date</label>
-                <input type="text" class="form-control @error('paid_date') is-invalid @enderror" id="paid_date"
+                <input type="date" class="form-control @error('paid_date') is-invalid @enderror" id="paid_date"
                     name="paid_date" />
                 @error('paid_date')
                     <div class="invalid-feedback">{{ $message }}</div>

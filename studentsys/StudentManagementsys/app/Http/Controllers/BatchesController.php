@@ -81,4 +81,16 @@ class BatchesController extends Controller
         BatchesModel::find($id)->delete();
         return redirect()->route("batches.index")->with("flash_message","Batches deleted!");
     }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $batchess = BatchesModel::where(function($query) use ($search){
+            $query->where("name","like","%".$search."%")
+            ->orWhere("course_id","like","%".$search."%")
+            ->orWhere("start_date","like","%".$search."%");
+        })
+
+        ->get();
+        return view("BatchesView.index", compact("batchess","search"));
+    }
 }

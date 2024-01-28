@@ -5,17 +5,24 @@
                         <h2  class="text-center">Courses Application</h2>
                     </div>
                     <div class="card-body">
-                        <a href="{{ route("courses.create") }}" class="btn btn-success btn-sm" title="Add New Course">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-                        <br/>
-                        <br/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{{ route("courses.create") }}" class="btn btn-success btn-sm" title="Add New Course">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                                </a>
+                            </div>
+                            <div class="col-md-6">
+                               @include('components.search')
+                            </div>
+                       </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
+                                        <th>Image</th>
                                         <th>syllabus</th>
                                         <th>duration</th>
                                         <th>Actions</th>
@@ -26,6 +33,9 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $cus->name }}</td>
+                                        <td>
+                                            <img src="{{ asset($cus->image) }}" alt="Img" style="width: 70px; height:70px;">
+                                        </td>
                                         <td>{{ $cus->syllabus }}</td>
                                         <td>{{ $cus->  duration()}}</td>
 

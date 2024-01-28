@@ -7,4 +7,5 @@
     <a class="a" href="{{ url('/batches') }}" style="text-decoration-line: none;">Batches</a>
     <a class="a" href="{{ url('/enrollment') }}" style="text-decoration-line: none;">Enrollment</a>
     <a class="a" href="{{ url('/payment') }}" style="text-decoration-line: none;">Payment</a>
+    <a class="a" href="{{ url('/dashboard') }}" style="text-decoration-line: none;">Come to dashboard</a>
 </div>

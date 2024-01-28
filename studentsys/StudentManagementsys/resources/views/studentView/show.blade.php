@@ -10,9 +10,11 @@
                 <div class="card-text" ><p class="font-weight-bold">Gender : <span class="font-weight-normal">{{ $student->gender }}</p></div>
                 <div class="card-text" ><p class="font-weight-bold">Address : <span class="font-weight-normal">{{ $student->address }}</p></div>
                 <div class="card-text" ><p class="font-weight-bold">Mobile : <span class="font-weight-normal">{{ $student->tel }}</p></div>
+                <div class="card-text" ><p class="font-weight-bold">Image : <img src="{{ asset($student->img) }}" alt="Img" style="width: 120px; height:100px;"> </p></div>
                 <a class="btn btn-primary" href=" {{ route("students.index") }}">Back</a>
         </div>
             </hr>
         </div>
  </div>
 @endsection
+

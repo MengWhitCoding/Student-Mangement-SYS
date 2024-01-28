@@ -8,21 +8,23 @@
       <form action="{{ route("students.store") }}" method="post" enctype="multipart/form-data">
         @csrf
         @method("POST")
-        <label for="" class="form-label">Name</label>
+                 <label for="" class="form-label">Name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                     name="name" />
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Gender</label>
-                <input type="text" class="form-control @error('gender') is-invalid @enderror" id="gender"
-                    name="gender" />
+                <select   class="form-control @error('gender') is-invalid @enderror" id="gender"  name="gender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
                 @error('gender')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Image</label>
                 <input type="file" class="form-control " id="img" name="img" />
-                
+
                 <label for="" class="form-label">Address</label>
                 <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"
                     name="address" />
@@ -44,3 +46,6 @@
 </div>
 
 @stop
+
+
+

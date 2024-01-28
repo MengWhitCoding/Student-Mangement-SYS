@@ -15,8 +15,11 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         <label for="" class="form-label">Gender</label>
-        <input type="text" class="form-control @error('gender') is-invalid @enderror" id="gender"
-            name="gender" value="{{ $item->gender }}"/>
+        <select   class="form-control @error('gender') is-invalid @enderror" id="gender"  name="gender" >
+            <option value="{{ $item->gender }}">{{ $item->gender }}</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+        </select>
         @error('gender')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

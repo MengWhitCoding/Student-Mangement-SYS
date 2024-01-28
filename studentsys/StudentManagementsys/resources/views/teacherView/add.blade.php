@@ -5,7 +5,7 @@
         <h3 class="card-header text-center">Add New Teacher</h3>
         <div class="card-body">
 
-            <form action="{{ route('teachers.store') }}" method="post">
+            <form action="{{ route('teachers.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <label for="" class="form-label">Name</label>
@@ -15,8 +15,10 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Gender</label>
-                <input type="text" class="form-control @error('gender') is-invalid @enderror" id="gender"
-                    name="gender" />
+                <select   class="form-control @error('gender') is-invalid @enderror" id="gender"  name="gender">
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
                 @error('gender')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
@@ -32,6 +34,9 @@
                 @error('tel')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+                <label for="" class="form-label">Image</label>
+                <input type="file" class="form-control " id="image" name="image" /></br>
+
 
                 <a class="btn btn-primary" href=" {{ route('teachers.index') }}">Back</a>
                 <input type="submit" value="Save" class="btn btn-success"></br>

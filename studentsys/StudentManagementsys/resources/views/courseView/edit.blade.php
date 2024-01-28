@@ -5,7 +5,7 @@
         <h3 class="card-header text-center">Course Update</h3>
         <div class="card-body">
 
-            <form action="{{ route('courses.update',$course->id) }}" method="post">
+            <form action="{{ route('courses.update',$course->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <label for="tag" class="form-label">Name</label>
@@ -14,6 +14,8 @@
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+                <label for="" class="form-label">Image</label>
+                <input type="file" class="form-control " id="image" name="image" value="{{ $course->image }}"/>
                 <label for="" class="form-label">Syllabus</label>
                 <input type="text" class="form-control @error('syllabus') is-invalid @enderror" id="syllabus"
                     name="syllabus" value="{{ $course->syllabus}}"/>

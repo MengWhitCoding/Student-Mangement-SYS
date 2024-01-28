@@ -9,7 +9,7 @@ class CourseModel extends Model
 {
     protected $table = 'courses';
     protected $primaryKey = 'id';
-    protected $fillable = ['name', 'syllabus', 'duration'];
+    protected $fillable = ['name', 'image','syllabus', 'duration'];
     use HasFactory;
 
     public function duration(){

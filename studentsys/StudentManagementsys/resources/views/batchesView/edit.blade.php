@@ -21,7 +21,7 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
                 <label for="" class="form-label">Start_date</label>
-                <input type="text" class="form-control @error('start_date') is-invalid @enderror" id="start_date"
+                <input type="date" class="form-control @error('start_date') is-invalid @enderror" id="start_date"
                     name="start_date" value="{{ $batch->start_date }}"/></br>
                 @error('start_date')
                     <div class="invalid-feedback">{{ $message }}</div>
