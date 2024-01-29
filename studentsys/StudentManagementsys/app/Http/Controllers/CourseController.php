@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CourseModel;
+use App\Models\TeacherModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -13,7 +14,8 @@ class CourseController extends Controller
         return view("courseView.index",compact("courses"));
     }
     public function create(){
-        return view("courseView.create");
+        $teachers = TeacherModel::pluck("name","id");
+        return view("courseView.create",compact("teachers"));
     }
     public function store(Request $request){
         $this->validate($request,[
@@ -37,6 +39,7 @@ class CourseController extends Controller
             'image'=> $path.$filename,
             'syllabus'=> $request->syllabus,
             'duration'=> $request->duration,
+            'teacher_id'=> $request->teacher_id
         ]);
         return redirect()->route("courses.index")->with("success","");
     }
@@ -45,8 +48,9 @@ class CourseController extends Controller
         return view("courseView.show",compact("course"));
     }
     public function edit($id){
+        $teachers = TeacherModel::pluck("name","id");
         $course = CourseModel::find($id);
-        return view("courseView.edit",compact("course"));
+        return view("courseView.edit",compact("course","teachers"));
     }
     public function update(Request $request, $id){
         $this->validate($request,[
@@ -73,6 +77,7 @@ class CourseController extends Controller
             'image'=> $path.$filename,
             'syllabus'=> $request->syllabus,
             'duration'=> $request->duration,
+            'teacher_id'=> $request->teacher_id
         ]);
         return redirect()->route("courses.index")->with("success","");
     }

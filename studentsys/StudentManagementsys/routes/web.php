@@ -30,6 +30,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('layout',);
@@ -44,18 +45,18 @@ Route::middleware('auth')->group(function () {
     Route::resource('/batches', BatchesController::class);
     Route::resource('/enrollment', EnrollmentController::class);
     Route::resource('/payment', PaymentController::class);
-    Route::get('/report/report1/{id}', [ReportController::class,'report1']);
-    Route::get('/search', [PaymentController::class,'search']);
-    Route::get('/search', [StudentController::class,'search']);
-    Route::get('/search', [TeacherController::class,'search']);
-    Route::get('/search', [CourseController::class,'search']);
+    Route::get('/report/report1/{id}', [ReportController::class, 'report1']);
+    Route::get('/searchp', [PaymentController::class, 'search']);
+    Route::get('/search', [StudentController::class, 'search']);
+    Route::get('/searcht', [TeacherController::class, 'search']);
+    Route::get('/searchc', [CourseController::class, 'search']);
+    Route::get('/searchb', [BatchesController::class, 'search']);
+    Route::get('/searche', [EnrollmentController::class, 'search']);
 
-    Route::get('/search', [EnrollmentController::class,'search']);
-    Route::get('/search', [BatchesController::class,'search']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

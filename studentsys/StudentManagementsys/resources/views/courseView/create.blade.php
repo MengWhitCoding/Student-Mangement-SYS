@@ -27,10 +27,16 @@
                 @enderror
                 <label for="" class="form-label">Duration</label>
                 <input type="text" class="form-control @error('duration') is-invalid @enderror" id="duration"
-                    name="duration" /></br>
+                    name="duration" />
                 @error('duration')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+                <label for="" class="form-label">Teacher_id</label>
+                <select name="teacher_id"  id="teacher_id" class="form-control " >
+                    @foreach ($teachers as $id=> $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                    @endforeach
+                </select>
 
                 <a class="btn btn-primary" href=" {{ route('courses.index') }}">Back</a>
                 <input type="submit" value="Save" class="btn btn-success"></br>

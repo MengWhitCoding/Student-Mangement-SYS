@@ -13,7 +13,15 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                               @include('components.search')
+                                <div class="form-group">
+                                    <form action="/searchc" method="get">
+                                        <div class="input-group">
+                                            <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
                        </div>
                         <div class="table-responsive">
@@ -25,6 +33,7 @@
                                         <th>Image</th>
                                         <th>syllabus</th>
                                         <th>duration</th>
+                                        <th>Teacher_name</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -38,6 +47,7 @@
                                         </td>
                                         <td>{{ $cus->syllabus }}</td>
                                         <td>{{ $cus->  duration()}}</td>
+                                        <td>{{ $cus->teacher->name }}</td>
 
                                         <td>
                                             <a href="{{ route('courses.show',$cus->id) }}" title="View Course"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

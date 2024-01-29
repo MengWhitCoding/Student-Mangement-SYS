@@ -132,7 +132,8 @@ class StudentController extends Controller
         $students = StudentModel::where(function($query) use ($search){
             $query->where("name","like","%".$search."%")
             ->orWhere("gender","like","%".$search."%")
-            ->orWhere("address","like","%".$search."%")
+           // ->orWhere("address","like","%".$search."%")
+            ->orWhere("id","like","%".$search."%")
             ->orWhere("tel","like","%".$search."%");
         })
 

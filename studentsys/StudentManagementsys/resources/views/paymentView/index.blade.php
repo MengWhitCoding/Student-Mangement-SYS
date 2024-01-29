@@ -12,7 +12,15 @@
                                 </a>
                             </div>
                             <div class="col-md-6">
-                               @include('components.search')
+                                <div class="form-group">
+                                    <form action="/searchp" method="get">
+                                        <div class="input-group">
+                                            <input class="form-control" name="search" placeholder="Search..." value="{{ isset($search) ? $search : ''}}">
+                                            <button type="submit" class="btn btn-primary">Search</button>
+                                        </div>
+                                    </form>
+                                </div>
+
                             </div>
                        </div>
                         <div class="table-responsive">

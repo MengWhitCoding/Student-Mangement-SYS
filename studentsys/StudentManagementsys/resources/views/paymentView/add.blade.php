@@ -1,7 +1,14 @@
 @extends('layout')
 @section('content')
 
+    <div class="col-md-12 ">
+       @if(session('success'))
+            <h6 class="alert alert-success">{{ session('success') }}</h6>
+       @endif
+    </div>
+
     <div class="card " style="width: 500px ">
+
         <h3 class="card-header text-center">Add New Payment</h3>
         <div class="card-body">
 

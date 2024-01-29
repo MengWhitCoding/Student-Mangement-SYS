@@ -56,7 +56,8 @@ class BatchesController extends Controller
     public function edit($id)
     {
         $batch = BatchesModel::find($id);
-        return view("batchesView.edit", compact("batch"));
+        $course = CourseModel::pluck("name","id");
+        return view("batchesView.edit", compact("batch","course"));
     }
 
     /**
@@ -86,10 +87,12 @@ class BatchesController extends Controller
         $search = $request->search;
         $batchess = BatchesModel::where(function($query) use ($search){
             $query->where("name","like","%".$search."%")
-            ->orWhere("course_id","like","%".$search."%")
+            ->orWhere("id","like","%".$search."%")
             ->orWhere("start_date","like","%".$search."%");
         })
-
+        ->orWhereHas("course", function($query) use ($search){
+            $query->where("name","like","%".$search."%");
+        })
         ->get();
         return view("BatchesView.index", compact("batchess","search"));
     }

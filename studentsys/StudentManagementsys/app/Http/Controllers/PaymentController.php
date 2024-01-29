@@ -55,7 +55,8 @@ class PaymentController extends Controller
     public function edit($id)
     {
         $payment = PaymentModel::find($id);
-        return view("paymentView.edit", compact("payment"));
+        $enrollments = EnrollmentModel::pluck("enroll_no","id");
+        return view("paymentView.edit", compact("payment","enrollments"));
     }
 
     /**
@@ -84,9 +85,14 @@ class PaymentController extends Controller
     public function search(Request $request){
         $search = $request->search;
         $payments = PaymentModel::where(function($query) use ($search){
-            $query->where("enrollment_id","like","%".$search."%")
+            $query->where("id","like","%".$search."%")
+            ->orWhere("paid_date","like","%".$search."%")
             ->orWhere("amount","like","%".$search."%");
-        })->get();
+        })
+        ->orWhereHas("enrollment", function($query) use ($search){
+            $query->where("enroll_no","like","%".$search."%");
+        })
+        ->get();
         return view("paymentView.index", compact("payments","search"));
     }
 }

@@ -24,7 +24,7 @@
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
         <label for="" class="form-label">Image</label>
-        <input type="file" class="form-control " id="img" name="img" value="{{ $item->img }}"/>
+        <input type="file" class="form-control " id="img" name="img" value="{{ asset($item->img) }}"/>
 
         <label for="" class="form-label">Address</label>
         <input type="text" class="form-control @error('address') is-invalid @enderror" id="address"

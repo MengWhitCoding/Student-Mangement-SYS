@@ -28,6 +28,13 @@
                 @error('duration')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
+                <label for="" class="form-label">Teacher_id</label>
+                <select name="teacher_id"  id="teacher_id" class="form-control " >
+                    <option value="{{ $course->teacher->id }}" selected>{{ $course->teacher->name  }}</option>
+                    @foreach ($teachers as $id=> $name)
+                        <option value="{{ $id }}">{{ $name }}</option>
+                    @endforeach
+                </select></br>
 
                 <a class="btn btn-primary" href=" {{ route('courses.index') }}">Back</a>
                 <input type="submit" value="Update" class="btn btn-success"></br>

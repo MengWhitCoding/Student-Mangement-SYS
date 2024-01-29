@@ -59,7 +59,9 @@ class EnrollmentController extends Controller
     public function edit($id)
     {
         $enrollment = EnrollmentModel::find($id);
-        return view("enrollmentView.edit", compact("enrollment"));
+        $batches = BatchesModel::pluck("name","id");
+        $students = StudentModel:: pluck("name","id");
+        return view("enrollmentView.edit", compact("enrollment","batches","students"));
     }
 
     /**
@@ -93,6 +95,12 @@ class EnrollmentController extends Controller
             $query->where("enroll_no","like","%".$search."%")
             ->orWhere("join_date","like","%".$search."%")
             ->orWhere("fee","like","%".$search."%");
+        })
+        ->orWhereHas("batch", function($query) use ($search){
+            $query->where("name","like","%".$search."%");
+        })
+        ->orWhereHas("student", function($query) use ($search){
+            $query->where("name","like","%".$search."%");
         })
 
         ->get();
