@@ -47,13 +47,13 @@
                                         <td>{{ $enroll->join_date}}</td>
                                         <td>{{ $enroll->fee}} $</td>
                                         <td>
-                                            <a href="{{ route('enrollment.show',$enroll->id) }}" title="View Enrollment"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ route('enrollment.edit',$enroll->id) }}" title="Edit Enrollment"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ route('enrollment.show',$enroll->id) }}" title="View Enrollment"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                                            <a href="{{ route('enrollment.edit',$enroll->id) }}" title="Edit Enrollment"><button class="btn btn-primary btn-sm"><i class="fa-regular fa-pen-to-square"></i></button></a>
 
                                             <form method="POST" action="{{ route('enrollment.destroy', $enroll->id) }}" accept-charset="UTF-8" style="display:inline">
                                                @csrf
                                                @method("DELETE")
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Enrollment" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Enrollment" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa-solid fa-trash-can"></i></button>
                                             </form>
                                         </td>
                                     </tr>

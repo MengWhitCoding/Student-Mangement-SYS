@@ -50,13 +50,13 @@
                                         <td>{{ $cus->teacher->name }}</td>
 
                                         <td>
-                                            <a href="{{ route('courses.show',$cus->id) }}" title="View Course"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ route('courses.edit',$cus->id) }}" title="Edit Course"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ route('courses.show',$cus->id) }}" title="View Course"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+                                            <a href="{{ route('courses.edit',$cus->id) }}" title="Edit Course"><button class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button></a>
 
                                             <form method="POST" action="{{ route('courses.destroy', $cus->id) }}" accept-charset="UTF-8" style="display:inline">
                                                @csrf
                                                @method("DELETE")
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Course" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Course" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa-solid fa-trash-can"></i></button>
                                             </form>
                                         </td>
                                     </tr>

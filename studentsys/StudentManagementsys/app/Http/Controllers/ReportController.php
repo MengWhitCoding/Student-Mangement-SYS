@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\PaymentModel;
@@ -7,41 +8,44 @@ use Illuminate\Support\Facades\App;
 
 class ReportController extends Controller
 {
-    public function report1($pid){
+    public function report1($pid)
+    {
         $payment = PaymentModel::find($pid);
-        $pdf = App::make('dompdf.wrapper');
-        $print = "<div style='margin: 20px; padding:20px'>";
-        $print = "<h1 align='center'>Payment Recipt</h1>";
-        $print = "<hr/>";
-        $print = "<p>Recipt No : <b> " . $pid ." </b></p>";
-        $print = "<p>Date : <b>" . $payment->paid_date ."</b></p>";
-        $print = "<p>Emrollment_no : <b>" . $payment->enrollment->enroll_no ."</b></p>";
+        $pdf = App::make("dompdf.wrapper");
 
-        $print = "<p>Student Name : <b>" . $payment->enrollment->student->name ."</b></p>";
+        $pdf->loadHTML(
+            "<div style='margin: 20px; padding:20px'>
+             <h1 align='center'>Payment Recipt</h1>
+             <hr/>
+             <p>Recipt No : <b>   $pid  </b></p>
+             <p>Date : <b>  $payment->paid_date </b></p>
+             <p>Emrollment_no : <b>" . $payment->enrollment->enroll_no . "</b></p>
 
-        $print = "<hr/>";
-        $print = "<table style='width:100%'>";
+             <p>Student Name : <b>" . $payment->enrollment->student->name . "</b></p>
+             <hr/>
 
-        $print = "<tr>";
-        $print = "<td>Description</td>";
-        $print = "<td>Amount</td>";
-
-        $print = "</tr>";
-
-        $print = "<tr>";
-        $print = "<td> <h3>" . $payment->enrollment->batch->name . "</h3> </td>";
-        $print = "<td> <h3>" . $payment->amount . "</h3> </td>";
-        $print = "</tr>";
-
-        $print = "</table>";
-        $print = "<hr/>";
-
-        $print = "<span> Printed Date: <b>". date('Y-m-d') . "</b></span>";
-
-        $print = "</div>";
-        $pdf->loadHTML($print);
+                <table style='width:100%;text-align: center'>
+                   <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Course<th>
+                            <th>Amount</th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                        <tr>
+                            <td >" . $payment->enrollment->batch->name . "</td>
+                            <td >" . $payment->enrollment->batch->course->name . "</td>
+                            <td></td>
+                            <td >" . $payment->amount . "$</td>
+                       </tr>
+                   </tbody>
+                </table>
+                <hr/>
+                <span> Printed Date: <b>" . date('Y-m-d',time()) . "</b></span>
+             </div>
+            "
+        );
         return $pdf->stream();
     }
 }
-
-
